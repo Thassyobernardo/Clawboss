@@ -1,6 +1,6 @@
 {
   "name": "claw-agency-hunter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Autonomous Upwork Lead Hunter powered by OpenClaw",
   "main": "index.js",
   "scripts": {
