@@ -1,0 +1,28 @@
+{
+  "name": "Claw Agency Hunter",
+  "gateway": {
+    "port": 18789,
+    "channels": ["telegram"]
+  },
+  "brain": {
+    "primary": {
+      "provider": "groq",
+      "model": "llama-3.3-70b-versatile",
+      "api_key": "${GROQ_API_KEY}"
+    },
+    "fallback": {
+      "provider": "gemini",
+      "model": "gemini-2.0-flash",
+      "api_key": "${GEMINI_API_KEY}"
+    }
+  },
+  "memory": {
+    "type": "postgres",
+    "url": "${DATABASE_URL}"
+  },
+  "queue": {
+    "type": "redis",
+    "url": "${REDIS_URL}"
+  },
+  "active_skills": ["autoresearch", "superpowers", "hunter"]
+}
