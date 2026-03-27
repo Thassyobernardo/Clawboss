@@ -24,8 +24,20 @@ with tab1:
     pending = db.get_projects_by_status("Ideia Pendente")
     if pending:
         for p in pending:
-            with st.expander(f"Nicho: {p['niche']} - {p['product_idea']}"):
-                st.write(f"Preço Sugerido: AUD {p['price_aud']}")
+            title = (p.get("titulo") or p.get("niche") or "").strip() or "—"
+            body = (p.get("descricao") or p.get("product_idea") or "").strip() or "—"
+            label = f"{title} — {body[:80]}{'…' if len(body) > 80 else ''}"
+            with st.expander(label):
+                st.subheader(title)
+                st.markdown("**Descrição**")
+                st.write(body)
+                if p.get("potencial_lucro"):
+                    st.markdown("**Potencial de lucro**")
+                    st.write(p["potencial_lucro"])
+                if p.get("escalabilidade"):
+                    st.markdown("**Escalabilidade**")
+                    st.write(p["escalabilidade"])
+                st.caption(f"Preço sugerido (legado): AUD {p['price_aud']}")
                 if st.button(f"Aprovar Ideia #{p['id']}", key=f"app_{p['id']}"):
                     db.update_project_status(p['id'], "Construindo")
                     st.success(f"Ideia #{p['id']} aprovada! O Designer foi notificado.")

@@ -6,6 +6,21 @@
   "tools": {
     "deny": ["write"]
   },
+  "skills": {
+    "load": {
+      "extraDirs": ["./skills"]
+    },
+    "entries": {
+      "sql": {
+        "enabled": true,
+        "config": {
+          "primaryTable": "projects",
+          "dashboardTab": "Ideias",
+          "requiredColumns": ["titulo", "descricao", "potencial_lucro", "escalabilidade"]
+        }
+      }
+    }
+  },
   "channels": {
     "telegram": {
       "groupPolicy": "allowlist",
@@ -15,7 +30,7 @@
       ],
       "direct": {
         "*": {
-          "systemPrompt": "HUNTER / Claw Agency — regras obrigatórias:\n\n1) É PROIBIDO usar a ferramenta `write` para guardar leads, relatórios ou notas (não crie arquivos .md inúteis).\n\n2) Persistência SOMENTE no PostgreSQL (Railway): use a ferramenta `exec` para executar, no workspace do projeto:\n   python3 hunter_db.py save '<JSON_EM_UMA_LINHA>'\n   O argumento é um JSON válido com chaves exatas: \"titulo\", \"dor_cliente\", \"como_escalar\", \"faturar_2k_mes\" (texto explicando como faturar pelo menos US$ 2000/mês neste tipo de oferta). Opcional: \"fonte\" (ex.: URL Upwork, id do job).\n\n3) Após processar cada lead relevante, você DEVE chamar esse comando uma vez com os quatro campos preenchidos de forma concreta (sem placeholders vazios).\n\n4) Ambiente: DATABASE_URL já vem do Railway; o código está em /app no container (localmente, use o diretório raiz do repositório)."
+          "systemPrompt": "HUNTER / Claw Agency — regras obrigatórias:\n\n1) É PROIBIDO usar a ferramenta `write` para guardar oportunidades ou notas em arquivos .md.\n\n2) Skill SQL (primária): toda oportunidade DEVE ir para o PostgreSQL na tabela **projects** — a mesma que alimenta a aba **Ideias** do Dashboard (Streamlit). Leia a skill `sql` no workspace.\n\n3) Sempre que encontrar uma oportunidade, você DEVE executar um comando SQL INSERT na tabela **projects** com as colunas: **titulo**, **descricao**, **potencial_lucro** e **escalabilidade** (e status implícito `Ideia Pendente`). Forma recomendada via `exec`:\n   python3 ideas_db.py save '{\"titulo\":\"...\",\"descricao\":\"...\",\"potencial_lucro\":\"...\",\"escalabilidade\":\"...\"}'\n   (JSON em uma linha; diretório de trabalho: /app no Railway.)\n\n4) Não use a tabela hunter_leads para ideias do Dashboard — use **projects**.\n\n5) DATABASE_URL vem do Railway."
         }
       }
     }
@@ -28,6 +43,5 @@
         "provider": "local"
       }
     }
-  },
-  "skills": {}
+  }
 }

@@ -31,6 +31,16 @@ def init_db():
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         );
     """)
+    # Colunas usadas pelo robô / aba Ideias (INSERT com titulo, descricao, potencial_lucro, escalabilidade)
+    for col, typ in (
+        ("titulo", "TEXT"),
+        ("descricao", "TEXT"),
+        ("potencial_lucro", "TEXT"),
+        ("escalabilidade", "TEXT"),
+    ):
+        cur.execute(
+            f"ALTER TABLE projects ADD COLUMN IF NOT EXISTS {col} {typ};"
+        )
     
     # Hunter / Upwork lead intelligence (PostgreSQL obrigatório — não usar .md)
     cur.execute("""
@@ -94,6 +104,36 @@ def add_project(niche, idea, price):
     conn.commit()
     cur.close()
     conn.close()
+
+
+def insert_idea_from_research(
+    titulo: str,
+    descricao: str,
+    potencial_lucro: str,
+    escalabilidade: str,
+    price_aud=35.0,
+):
+    """Insere linha na tabela projects (aba Ideias). Mantém niche/product_idea alinhados ao legado do dashboard."""
+    conn = get_connection()
+    cur = conn.cursor()
+    t, d = titulo.strip(), descricao.strip()
+    pl, es = potencial_lucro.strip(), escalabilidade.strip()
+    cur.execute(
+        """
+        INSERT INTO projects (
+            titulo, descricao, potencial_lucro, escalabilidade,
+            niche, product_idea, price_aud, responsible_agent, status
+        )
+        VALUES (%s, %s, %s, %s, %s, %s, %s, 'Research', 'Ideia Pendente')
+        RETURNING id;
+        """,
+        (t, d, pl, es, t, d, price_aud),
+    )
+    row = cur.fetchone()
+    conn.commit()
+    cur.close()
+    conn.close()
+    return int(row["id"])
 
 def get_projects_by_status(status):
     conn = get_connection()
