@@ -38,7 +38,7 @@
   "agents": {
     "defaults": {
       "workspace": "/app",
-      "model": "openrouter/deepseek/deepseek-chat",
+      "model": "openrouter/google/gemini-2.0-flash-lite-001",
       "memorySearch": {
         "provider": "local"
       }

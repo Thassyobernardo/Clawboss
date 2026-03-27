@@ -6,7 +6,7 @@ ENV OPENCLAW_GATEWAY_MODE=local
 ENV OPENCLAW_GATEWAY_FOREGROUND=true
 
 # Install Python and dependencies for skills
-RUN apt-get update && apt-get install -y python3 python3-pip python3-venv curl libpq-dev build-essential && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y python3 python3-pip python3-venv curl libpq-dev build-essential lsof && rm -rf /var/lib/apt/lists/*
 
 # Copy package files
 COPY package.json ./
