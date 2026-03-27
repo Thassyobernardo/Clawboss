@@ -7,7 +7,7 @@
     "telegram": {
       "groupPolicy": "allowlist",
       "dmPolicy": "allowlist",
-      "allowFrom": [
+      "allowlist": [
         "6868150391"
       ]
     }
