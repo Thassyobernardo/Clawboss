@@ -1,8 +1,10 @@
 apify-client
 groq
-pydantic>=2.0.0
-fastapi
-uvicorn
+google-generativeai
 python-dotenv
 psycopg2-binary
-redis
+streamlit
+pandas
+xlsxwriter
+browser-use
+playwright

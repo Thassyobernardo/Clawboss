@@ -20,6 +20,11 @@ COPY . .
 # Install Python requirements
 RUN pip3 install --no-cache-dir --break-system-packages -r requirements.txt
 
-EXPOSE 18789
+# Make start script executable
+RUN chmod +x start.sh
 
-CMD ["npm", "start"]
+# Expose OpenClaw (18789) and Streamlit (8501)
+EXPOSE 18789 8501
+
+# Railway will use the port defined in $PORT, but we'll try to run both
+CMD ["./start.sh"]
