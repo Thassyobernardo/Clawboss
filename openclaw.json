@@ -15,10 +15,6 @@
   "agents": {
     "defaults": {
       "model": "together_ai/meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
-      "modelOptions": {
-        "baseURL": "https://api.together.xyz/v1",
-        "apiKey": "$OPENAI_API_KEY"
-      },
       "memorySearch": {
         "provider": "local"
       }
