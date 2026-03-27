@@ -7,8 +7,9 @@
   },
   "channels": {
     "telegram": {
-      "groupPolicy": "open",
-      "dmPolicy": "open"
+      "groupPolicy": "restricted",
+      "dmPolicy": "allowlist",
+      "allowFrom": ["6868150391"]
     }
   },
   "brain": {
