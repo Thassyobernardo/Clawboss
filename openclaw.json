@@ -14,7 +14,7 @@
   },
   "agents": {
     "defaults": {
-      "model": "together_ai/meta-llama/Llama-3.3-70B-Instruct-Turbo",
+      "model": "openrouter/deepseek/deepseek-chat",
       "memorySearch": {
         "provider": "local"
       }
