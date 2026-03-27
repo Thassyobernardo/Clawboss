@@ -16,5 +16,5 @@ echo "Starting OpenClaw Gateway..."
 npx openclaw gateway --allow-unconfigured &
 
 # Start Streamlit Dashboard in foreground
-echo "Starting Streamlit Dashboard..."
-streamlit run app.py --server.port 8501 --server.address 0.0.0.0
+echo "Starting Streamlit Dashboard on port ${PORT:-8501}..."
+streamlit run app.py --server.port ${PORT:-8501} --server.address 0.0.0.0
