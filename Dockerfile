@@ -26,5 +26,8 @@ RUN chmod +x start.sh
 # Expose OpenClaw (18789) and Streamlit (8501)
 EXPOSE 18789 8501
 
+# Install litellm with proxy support
+RUN pip3 install --no-cache-dir --break-system-packages 'litellm[proxy]>=1.35.0'
+
 # Railway will use the port defined in $PORT, but we'll try to run both
 CMD ["./start.sh"]
