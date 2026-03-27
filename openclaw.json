@@ -15,7 +15,11 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "groq/llama-3.3-70b-versatile"
+        "primary": "gemini/gemini-2.0-flash",
+        "maxTokens": 8192,
+        "modelFailover": [
+          "groq/llama-3.3-70b-versatile"
+        ]
       },
       "memorySearch": {
         "provider": "local"
