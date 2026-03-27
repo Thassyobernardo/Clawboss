@@ -14,7 +14,7 @@
   },
   "agents": {
     "defaults": {
-      "model": "together/meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo",
+      "model": "together/deepseek-ai/deepseek-chat",
       "memorySearch": {
         "provider": "local"
       }
