@@ -7,7 +7,8 @@
   },
   "channels": {
     "telegram": {
-      "groupPolicy": "open"
+      "groupPolicy": "open",
+      "dmPolicy": "open"
     }
   },
   "brain": {
