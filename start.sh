@@ -12,8 +12,8 @@ python3 db.py
 
 # Start OpenClaw Gateway in background
 echo "Starting OpenClaw Gateway..."
-# Using --config to be absolutely sure
-npx openclaw gateway --config /root/.openclaw/openclaw.json --allow-unconfigured &
+# Relying on /root/.openclaw/openclaw.json already placed
+npx openclaw gateway --allow-unconfigured &
 
 # Start Streamlit Dashboard in foreground
 echo "Starting Streamlit Dashboard..."
