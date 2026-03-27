@@ -14,7 +14,7 @@
   },
   "agents": {
     "defaults": {
-      "model": "google/gemini-2.0-flash",
+      "model": "groq/llama-3.3-70b-versatile",
       "memorySearch": {
         "provider": "local"
       }
