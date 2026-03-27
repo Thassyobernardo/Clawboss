@@ -1,11 +1,19 @@
 #!/bin/bash
 
+# Ensure config directory exists
+mkdir -p /root/.openclaw/
+
+# Force copy local project config to the location OpenClaw expects
+cp openclaw.json /root/.openclaw/openclaw.json
+echo "Project openclaw.json copied to /root/.openclaw/openclaw.json"
+
 # Initialize Database
 python3 db.py
 
 # Start OpenClaw Gateway in background
 echo "Starting OpenClaw Gateway..."
-npx openclaw gateway --allow-unconfigured &
+# Using --config to be absolutely sure
+npx openclaw gateway --config /root/.openclaw/openclaw.json --allow-unconfigured &
 
 # Start Streamlit Dashboard in foreground
 echo "Starting Streamlit Dashboard..."
