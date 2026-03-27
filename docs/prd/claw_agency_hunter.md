@@ -1,40 +1,23 @@
-# PRD: Claw Agency Hunter Agent System
+# PRD - Claw Agency Hunter
 
-## Overview
-Claw Agency Hunter is an autonomous AI agent system built on the OpenClaw framework, designed to find, research, and outreach to potential leads on Upwork.
+## Objetivo
+Criar um agente autônomo baseado no framework OpenClaw para prospecção de leads no Upwork, pesquisa profunda e geração de propostas personalizadas.
 
-## Goal
-To automate the lead generation and proposal process for Claw Agency, leveraging high-speed LLMs (Groq) and scalable fallbacks (Gemini).
+## Stack Técnica
+- **Framework**: OpenClaw (Node.js 22+)
+- **LLM Primário**: Groq (llama-3.3-70b-versatile)
+- **LLM Fallback**: Gemini 2.0 Flash
+- **Banco de Dados**: PostgreSQL (Railway)
+- **Fila**: Redis (Railway)
+- **Habilidades (Skills)**: AutoResearch, Superpowers, Hunter (Apify)
 
-## Target Stack
-- **Framework**: OpenClaw (Railway Deployment)
-- **Primary LLM**: Groq (llama-3.3-70b)
-- **Fallback LLM**: Gemini 2.0 Flash
-- **Database**: Railway PostgreSQL
-- **Queue**: Railway Redis
-- **Notifications**: Telegram Bot
+## Funcionalidades
+1. **Hunter**: Scraper do Upwork via Apify para encontrar leads baseados em palavras-chave.
+2. **AutoResearch**: Pesquisa profunda sobre o cliente e o projeto para enriquecer a proposta.
+3. **Superpowers**: Acesso ao sistema de arquivos e shell para automação local.
+4. **Notificações**: Integração com Telegram para alertas e controle do agente.
 
-## Key Components
-
-### 1. OpenClaw Core
-- **Gateway**: Handles Telegram integration.
-- **Brain**: Interprets leads and decides on research/proposal strategy.
-- **Memory**: Persistent storage in PostgreSQL.
-
-### 2. Specialized Skills
-- **AutoResearch**: A deep research loop that investigates the lead's company, project requirements, and industry context.
-- **Superpowers**: Provides the agent with shell and filesystem access for local processing and task automation.
-- **Hunter**:
-  - **Scraping**: Uses Apify to extract Upwork job postings.
-  - **Proposal Generation**: Uses Groq (or Gemini) to craft personalized proposals based on research.
-  - **Delivery**: Sends proposals via Resend (Email) and notifications via Telegram.
-
-## Requirements
-- **Dockerfile**: Optimized for node.js/python environment required by OpenClaw.
-- **Railway Configuration**: Multi-service setup (App, DB, Redis).
-- **Environment Management**: Secure handling of API keys.
-
-## Success Criteria
-- Agent successfully scrapes Upwork leads.
-- Agent performs background research autonomously.
-- Agent generates and sends/notifies about high-quality proposals.
+## Configuração de Deploy
+- **Plataforma**: Railway
+- **Porta**: 18789
+- **Modo Gateway**: Local (Containerizado)
