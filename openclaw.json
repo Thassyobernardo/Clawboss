@@ -1,15 +1,15 @@
 {
-  "name": "Claw Agency Hunter",
   "gateway": {
     "mode": "local",
-    "port": 18789,
-    "channels": ["telegram"]
+    "port": 18789
   },
   "channels": {
     "telegram": {
-      "groupPolicy": "restricted",
+      "groupPolicy": "allowlist",
       "dmPolicy": "allowlist",
-      "allowFrom": ["6868150391"]
+      "allowFrom": [
+        "6868150391"
+      ]
     }
   },
   "agents": {
@@ -18,29 +18,16 @@
         "primary": "groq/llama-3.3-70b-versatile"
       },
       "memorySearch": {
-        "provider": "postgres",
-        "postgres": {
-          "connection": "${DATABASE_URL}"
-        }
+        "provider": "local"
       }
     }
   },
   "skills": {
-    "configs": {
-      "openprose": {
-        "stateMode": "postgres",
-        "postgres": {
-          "connection": "${DATABASE_URL}"
-        }
+    "openprose": {
+      "stateMode": "postgres",
+      "postgres": {
+        "connection": "${DATABASE_URL}"
       }
     }
-  },
-  "active_skills": [
-    "market_research",
-    "product_builder",
-    "social_hunter",
-    "manager",
-    "take_the_wheel",
-    "open-prose"
-  ]
+  }
 }
