@@ -10,8 +10,8 @@ echo "Project openclaw.json copied to /root/.openclaw/openclaw.json"
 # Initialize Database
 python3 db.py
 
-# Stop any existing OpenClaw processes
-pkill -f openclaw || true
+# Stop any existing OpenClaw processes by port
+kill $(lsof -t -i:18789) 2>/dev/null || true
 
 # Start OpenClaw Gateway in background
 echo "Starting OpenClaw Gateway..."
