@@ -7,7 +7,7 @@
     "telegram": {
       "groupPolicy": "allowlist",
       "dmPolicy": "allowlist",
-      "allowlist": [
+      "allowFrom": [
         "6868150391"
       ]
     }
@@ -22,12 +22,5 @@
       }
     }
   },
-  "skills": {
-    "openprose": {
-      "stateMode": "postgres",
-      "postgres": {
-        "connection": "${DATABASE_URL}"
-      }
-    }
-  }
+  "skills": {}
 }
