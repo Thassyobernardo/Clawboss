@@ -12,25 +12,35 @@
       "allowFrom": ["6868150391"]
     }
   },
-  "brain": {
-    "primary": {
-      "provider": "groq",
-      "model": "llama-3.3-70b-versatile",
-      "api_key": "${GROQ_API_KEY}"
-    },
-    "fallback": {
-      "provider": "gemini",
-      "model": "gemini-2.0-flash",
-      "api_key": "${GEMINI_API_KEY}"
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "groq/llama-3.3-70b-versatile"
+      },
+      "memorySearch": {
+        "provider": "postgres",
+        "postgres": {
+          "connection": "${DATABASE_URL}"
+        }
+      }
     }
   },
-  "memory": {
-    "type": "postgres",
-    "url": "${DATABASE_URL}"
+  "skills": {
+    "configs": {
+      "openprose": {
+        "stateMode": "postgres",
+        "postgres": {
+          "connection": "${DATABASE_URL}"
+        }
+      }
+    }
   },
-  "queue": {
-    "type": "redis",
-    "url": "${REDIS_URL}"
-  },
-  "active_skills": ["market_research", "product_builder", "social_hunter", "manager", "take_the_wheel"]
+  "active_skills": [
+    "market_research",
+    "product_builder",
+    "social_hunter",
+    "manager",
+    "take_the_wheel",
+    "open-prose"
+  ]
 }
