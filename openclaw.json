@@ -1,8 +1,14 @@
 {
   "name": "Claw Agency Hunter",
   "gateway": {
+    "mode": "local",
     "port": 18789,
     "channels": ["telegram"]
+  },
+  "channels": {
+    "telegram": {
+      "groupPolicy": "open"
+    }
   },
   "brain": {
     "primary": {
