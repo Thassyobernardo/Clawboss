@@ -8,6 +8,8 @@ load_dotenv()
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 def get_connection():
+    if not DATABASE_URL:
+        raise ValueError("A variável de ambiente DATABASE_URL não está definida. Certifique-se de que o PostgreSQL está conectado ao serviço no Railway.")
     return psycopg2.connect(DATABASE_URL, cursor_factory=RealDictCursor)
 
 def init_db():
