@@ -32,6 +32,19 @@ def init_db():
         );
     """)
     
+    # Hunter / Upwork lead intelligence (PostgreSQL obrigatório — não usar .md)
+    cur.execute("""
+        CREATE TABLE IF NOT EXISTS hunter_leads (
+            id SERIAL PRIMARY KEY,
+            titulo TEXT NOT NULL,
+            dor_cliente TEXT NOT NULL,
+            como_escalar TEXT NOT NULL,
+            faturar_2k_mes TEXT NOT NULL,
+            fonte TEXT,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+    """)
+
     # Create agent_status table
     cur.execute("""
         CREATE TABLE IF NOT EXISTS agent_status (
