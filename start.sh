@@ -1,6 +1,7 @@
 #!/bin/bash
 
-kill $(lsof -t -i:18789) 2>/dev/null || true
+fuser -k 18789/tcp 2>/dev/null || true
+sleep 2
 
 # Ensure config directory exists
 mkdir -p /root/.openclaw/
