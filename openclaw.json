@@ -39,6 +39,7 @@
     "defaults": {
       "workspace": "/app",
       "model": "openrouter/anthropic/claude-3.5-haiku",
+      "maxTokens": 2000,
       "memorySearch": {
         "provider": "local"
       }
