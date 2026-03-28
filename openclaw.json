@@ -38,7 +38,7 @@
   "agents": {
     "defaults": {
       "workspace": "/app",
-      "model": "openrouter/google/gemini-2.0-flash-lite-001",
+      "model": "openrouter/mistralai/mistral-small-3.1-24b-instruct",
       "memorySearch": {
         "provider": "local"
       }
