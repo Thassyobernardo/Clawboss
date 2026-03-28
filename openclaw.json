@@ -38,7 +38,7 @@
   "agents": {
     "defaults": {
       "workspace": "/app",
-      "model": "openrouter/mistralai/mistral-small-3.1-24b-instruct",
+      "model": "openrouter/anthropic/claude-3-haiku",
       "memorySearch": {
         "provider": "local"
       }
