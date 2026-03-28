@@ -39,7 +39,6 @@
     "defaults": {
       "workspace": "/app",
       "model": "openrouter/google/gemini-2.0-flash-lite-001",
-      "maxTokens": 2000,
       "memorySearch": {
         "provider": "local"
       }
