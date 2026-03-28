@@ -38,7 +38,7 @@
   "agents": {
     "defaults": {
       "workspace": "/app",
-      "model": "openrouter/google/gemini-2.0-flash-lite-001",
+      "model": "openrouter/anthropic/claude-3.5-haiku",
       "memorySearch": {
         "provider": "local"
       }
