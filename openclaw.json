@@ -35,7 +35,7 @@
   "agents": {
     "defaults": {
       "workspace": "/app",
-      "model": "openrouter/anthropic/claude-3-5-sonnet-20241022",
+      "model": "groq/llama-3.3-70b-versatile",
       "memorySearch": {
         "provider": "local"
       }
